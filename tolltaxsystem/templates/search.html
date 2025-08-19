@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Vehicle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(120deg, #f0f8ff, #e6f0ff);
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            text-align: center;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="text"] {
+            width: 90%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background: #4a90e2;
+            border: none;
+            color: white;
+            font-size: 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        input[type="submit"]:hover {
+            background: #357ac9;
+        }
+        table {
+            border-collapse: collapse;
+            width: 90%;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #4a90e2;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f7ff;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #4a90e2;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        h3 {
+            text-align: center;
+            color: #444;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h2>🔍 Search Vehicle</h2>
+    <form method="POST">
+        <label>Vehicle Number:</label>
+        <input type="text" name="vehicle_number" placeholder="e.g. MH12AB1234" required>
+        <input type="submit" value="Search">
+    </form>
+
+    {% if results %}
+    <h3>Search Results:</h3>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Vehicle Number</th>
+            <th>Vehicle Type</th>
+            <th>Toll Amount (Rs)</th>
+        </tr>
+        {% for row in results %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    <a href="/dashboard">⬅ Back to Dashboard</a>
+</body>
+</html>

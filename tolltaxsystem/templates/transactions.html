@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Transactions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(120deg, #f9faff, #e6f0ff);
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            border-collapse: collapse;
+            width: 90%;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #4a90e2;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f7ff;
+        }
+        h3 {
+            text-align: center;
+            color: #444;
+            margin-top: 20px;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #4a90e2;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h2>📜 All Toll Transactions</h2>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Vehicle Number</th>
+            <th>Vehicle Type</th>
+            <th>Toll Amount (Rs)</th>
+        </tr>
+        {% for row in records %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h3>💰 Total Toll Collected: Rs {{ total_toll }}</h3>
+    <a href="/dashboard">⬅ Back to Dashboard</a>
+</body>
+</html>
